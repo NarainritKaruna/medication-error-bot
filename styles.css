@@ -98,6 +98,7 @@ h1 {
 
 .primary-button,
 .secondary-button,
+.danger-button,
 .icon-button,
 .case-pill {
   border: 1px solid transparent;
@@ -128,6 +129,14 @@ h1 {
   font-weight: 700;
 }
 
+.danger-button {
+  padding: 0 14px;
+  background: #fff1f2;
+  color: #9f1239;
+  border-color: #fecdd3;
+  font-weight: 700;
+}
+
 .icon-button {
   width: 42px;
   padding: 0;
@@ -139,6 +148,7 @@ h1 {
 
 .primary-button:focus-visible,
 .secondary-button:focus-visible,
+.danger-button:focus-visible,
 .icon-button:focus-visible,
 .case-pill:focus-visible,
 textarea:focus-visible {
@@ -504,6 +514,17 @@ th:nth-child(3) {
 #answerContent ul {
   margin: 0;
   padding-left: 20px;
+}
+
+.reference-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.reference-list a {
+  color: #0369a1;
+  overflow-wrap: anywhere;
 }
 
 .tag {

@@ -24,12 +24,16 @@
             <span aria-hidden="true">+</span>
             Generate prescription
           </button>
+          <button id="uploadBtn" class="secondary-button" type="button">Upload case</button>
+          <button id="templateBtn" class="secondary-button" type="button">Template</button>
+          <button id="deleteCaseBtn" class="danger-button" type="button">Delete case</button>
           <button id="resetBtn" class="icon-button" type="button" title="Reset answer" aria-label="Reset answer">
             ↺
           </button>
           <button id="printBtn" class="icon-button" type="button" title="Print prescription" aria-label="Print prescription">
             ⎙
           </button>
+          <input id="caseUploadInput" type="file" accept="application/json,.json" hidden>
         </div>
 
         <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>
@@ -121,7 +125,7 @@
 
           <section class="student-task">
             <h2>งานของนักศึกษา</h2>
-            <p>ระบุ medical error อย่างน้อย 2 จุด พร้อมชนิดของ error และข้อเสนอแนะการแก้ไข ตรวจสอบ allergy, labs, quantity, route, interaction, dose, duration และรายการยาเดิม</p>
+            <p>ระบุและอธิบาย medical error รวมถึงข้อเสนอแนะการแก้ไขของใบสั่งยานี้</p>
           </section>
 
           <footer class="form-signoff">

@@ -539,7 +539,93 @@ const formatMeta = {
   }
 };
 
+const caseReferences = {
+  "TE-0001": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: warfarin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=warfarin"],
+    ["DailyMed official label search: amiodarone", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amiodarone"],
+    ["DailyMed official label search: ibuprofen", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ibuprofen"]
+  ],
+  "TE-0002": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: losartan", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=losartan"],
+    ["DailyMed official label search: spironolactone", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=spironolactone"],
+    ["DailyMed official label search: potassium chloride", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=potassium%20chloride"]
+  ],
+  "TE-0003": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: clopidogrel", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clopidogrel"],
+    ["DailyMed official label search: omeprazole", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=omeprazole"],
+    ["DailyMed official label search: diclofenac", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diclofenac"]
+  ],
+  "TE-0004": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: amoxicillin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amoxicillin"],
+    ["DailyMed official label search: clarithromycin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clarithromycin"],
+    ["DailyMed official label search: omeprazole", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=omeprazole"]
+  ],
+  "TE-0005": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: loperamide", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=loperamide"],
+    ["DailyMed official label search: ciprofloxacin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ciprofloxacin"],
+    ["CDC: diarrhea treatment and dehydration", "https://www.cdc.gov/healthywater/hygiene/disease/diarrhea.html"]
+  ],
+  "TE-0006": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: azithromycin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=azithromycin"],
+    ["DailyMed official label search: levofloxacin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=levofloxacin"],
+    ["EMA: domperidone safety restrictions", "https://www.ema.europa.eu/en/medicines/human/referrals/domperidone-containing-medicines"]
+  ],
+  "TE-0007": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["ACOG: urinary tract infections in pregnant individuals", "https://www.acog.org/clinical/clinical-guidance/clinical-consensus/articles/2023/08/urinary-tract-infections-in-pregnant-individuals"],
+    ["DailyMed official label search: ciprofloxacin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ciprofloxacin"],
+    ["DailyMed official label search: trimethoprim sulfamethoxazole", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trimethoprim%20sulfamethoxazole"]
+  ],
+  "TE-0008": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: vancomycin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=vancomycin"],
+    ["DailyMed official label search: gentamicin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gentamicin"],
+    ["FDA: metformin kidney function warning update", "https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-revises-warnings-regarding-use-diabetes-medicine-metformin"]
+  ],
+  "TE-0009": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: vincristine", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=vincristine"],
+    ["DailyMed official label search: methotrexate", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=methotrexate"],
+    ["ISMP: vinca alkaloid safety", "https://www.ismp.org/"]
+  ],
+  "TE-0010": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: tamoxifen", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=tamoxifen"],
+    ["DailyMed official label search: fluoxetine", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluoxetine"],
+    ["DailyMed official label search: tramadol", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=tramadol"],
+    ["DailyMed official label search: ondansetron", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ondansetron"]
+  ],
+  "TE-0011": [
+    ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+    ["MIMS drug reference", "https://www.mims.com/"],
+    ["DailyMed official label search: metformin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=metformin"],
+    ["DailyMed official label search: enalapril", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=enalapril"],
+    ["DailyMed official label search: atorvastatin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=atorvastatin"],
+    ["DailyMed official label search: aspirin", "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=aspirin"]
+  ]
+};
+
 const generateBtn = document.querySelector("#generateBtn");
+const uploadBtn = document.querySelector("#uploadBtn");
+const templateBtn = document.querySelector("#templateBtn");
+const deleteCaseBtn = document.querySelector("#deleteCaseBtn");
+const caseUploadInput = document.querySelector("#caseUploadInput");
 const resetBtn = document.querySelector("#resetBtn");
 const printBtn = document.querySelector("#printBtn");
 const caseStrip = document.querySelector("#caseStrip");
@@ -561,15 +647,43 @@ const scoreText = document.querySelector("#scoreText");
 const feedbackList = document.querySelector("#feedbackList");
 const pharmacistNote = document.querySelector("#pharmacistNote");
 
+const builtinCaseIds = new Set(cases.map((item) => item.id));
+const customCaseIds = new Set();
+const deletedBuiltinCaseIds = new Set();
+const CUSTOM_CASES_KEY = "medical-error-bot-custom-cases";
+const DELETED_CASES_KEY = "medical-error-bot-deleted-builtin-cases";
+
 function makeField(label, value) {
-  return `<div class="patient-field"><span>${label}</span><strong>${value}</strong></div>`;
+  return `<div class="patient-field"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (char) => {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char];
+  });
+}
+
+function safeUrl(value) {
+  const url = String(value ?? "");
+  if (url.startsWith("https://") || url.startsWith("http://")) return url;
+  return "#";
 }
 
 function renderCase(index) {
+  if (!cases.length) {
+    resetFeedback("Empty", "No cases available. Upload a case template to continue.");
+    return;
+  }
   currentIndex = index;
   const selectedCase = cases[index];
   const p = selectedCase.patient;
-  const meta = formatMeta[selectedCase.id];
+  const meta = formatMeta[selectedCase.id] || buildDefaultMeta(selectedCase);
   const [sex, age] = p.sexAge.split(" / ");
 
   formCaseTitle.textContent = `ใบสั่งยาที่ ${index + 1}`;
@@ -588,14 +702,14 @@ function renderCase(index) {
 
   diagnosisText.textContent = p.diagnosis;
   labCells.innerHTML = selectedCase.labs.split(",").map((lab) => {
-    return `<div class="lab-cell">${lab.trim()}</div>`;
+    return `<div class="lab-cell">${escapeHtml(lab.trim())}</div>`;
   }).join("");
   doctorLine.textContent = `แพทย์ ${p.prescriber}     นัดติดตาม ${p.followUp}     Clinic Teaching OPD     จำนวนวันถึงนัด ${p.days}`;
   medRows.innerHTML = selectedCase.meds.map((med) => {
-    return `<tr><td>${med[0]}</td><td>${med[1]}</td><td>${med[2]}</td><td>${med[3]}</td><td>□ Consult</td></tr>`;
+    return `<tr><td>${escapeHtml(med[0])}</td><td>${escapeHtml(med[1])}</td><td>${escapeHtml(med[2])}</td><td>${escapeHtml(med[3])}</td><td>□ Consult</td></tr>`;
   }).join("");
   previousRows.innerHTML = meta.previousMeds.map((med) => {
-    return `<tr><td>${med[0]}</td><td>${med[1]}</td><td>${med[2]}</td><td>${med[3]}</td><td>${med[4]}</td></tr>`;
+    return `<tr><td>${escapeHtml(med[0])}</td><td>${escapeHtml(med[1])}</td><td>${escapeHtml(med[2])}</td><td>${escapeHtml(med[3])}</td><td>${escapeHtml(med[4])}</td></tr>`;
   }).join("");
 
   pharmacistNote.textContent = "Pending review";
@@ -650,14 +764,17 @@ function checkAnswer() {
 function showAnswer() {
   const selectedCase = cases[currentIndex];
   const answer = selectedCase.answer;
+  const refs = selectedCase.references || caseReferences[selectedCase.id] || [];
   answerContent.innerHTML = `
-    <p><strong>${answer.summary}</strong></p>
+    <p><strong>${escapeHtml(answer.summary)}</strong></p>
     <h3>Likely medical errors</h3>
-    <ul>${answer.errors.map((item) => `<li>${item}</li>`).join("")}</ul>
+    <ul>${answer.errors.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
     <h3>Safer correction</h3>
-    <ul>${answer.safer.map((item) => `<li>${item}</li>`).join("")}</ul>
+    <ul>${answer.safer.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
     <h3>Teaching tags</h3>
-    <div>${answer.keywords.slice(0, 8).map((item) => `<span class="tag">${item}</span>`).join("")}</div>
+    <div>${answer.keywords.slice(0, 8).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join("")}</div>
+    <h3>Drug interaction / official references</h3>
+    <div class="reference-list">${refs.map((item) => `<a href="${safeUrl(item[1])}" target="_blank" rel="noopener noreferrer">${escapeHtml(item[0])}</a>`).join("")}</div>
   `;
   answerPanel.hidden = false;
   pharmacistNote.textContent = "Teaching answer revealed";
@@ -676,7 +793,173 @@ function generateRandomCase() {
   studentAnswer.value = "";
 }
 
+function buildDefaultMeta(selectedCase) {
+  return {
+    vn: "New",
+    coverage: "Teaching simulation",
+    height: "-",
+    weighedDate: selectedCase.patient?.date || "-",
+    time: "-",
+    previousDate: "New case",
+    previousMeds: [["1", "No previous medication documented", "-", "-", "□ Consult"]]
+  };
+}
+
+function validateCasePack(pack) {
+  const nextCase = pack.case || pack;
+  const required = [nextCase.id, nextCase.category, nextCase.patient, nextCase.labs, nextCase.meds, nextCase.answer];
+  if (required.some((item) => !item)) {
+    throw new Error("Template must include case.id, category, patient, labs, meds, and answer.");
+  }
+  if (!Array.isArray(nextCase.meds) || !Array.isArray(nextCase.answer.errors) || !Array.isArray(nextCase.answer.safer)) {
+    throw new Error("meds, answer.errors, and answer.safer must be arrays.");
+  }
+  if (!Array.isArray(nextCase.answer.keywords)) nextCase.answer.keywords = [];
+  if (pack.references && !Array.isArray(pack.references)) {
+    throw new Error("references must be an array of [label, url] pairs.");
+  }
+  nextCase.references = pack.references || nextCase.references || [];
+  return {
+    case: nextCase,
+    formatMeta: pack.formatMeta || pack.meta || buildDefaultMeta(nextCase)
+  };
+}
+
+function addCasePack(pack, persist = true) {
+  const parsed = validateCasePack(pack);
+  const existingIndex = cases.findIndex((item) => item.id === parsed.case.id);
+  if (existingIndex >= 0 && persist && !window.confirm(`Case ${parsed.case.id} already exists. Replace it?`)) return false;
+  if (existingIndex >= 0) cases.splice(existingIndex, 1, parsed.case);
+  else cases.push(parsed.case);
+  formatMeta[parsed.case.id] = parsed.formatMeta;
+  customCaseIds.add(parsed.case.id);
+  deletedBuiltinCaseIds.delete(parsed.case.id);
+  if (persist) saveCaseState();
+  updateCaseButtons();
+  renderCase(cases.findIndex((item) => item.id === parsed.case.id));
+  return true;
+}
+
+function saveCaseState() {
+  const customPacks = cases
+    .filter((item) => customCaseIds.has(item.id))
+    .map((item) => ({
+      schemaVersion: 1,
+      case: item,
+      formatMeta: formatMeta[item.id] || buildDefaultMeta(item),
+      references: item.references || []
+    }));
+  localStorage.setItem(CUSTOM_CASES_KEY, JSON.stringify(customPacks));
+  localStorage.setItem(DELETED_CASES_KEY, JSON.stringify([...deletedBuiltinCaseIds]));
+}
+
+function loadCaseState() {
+  try {
+    const deletedIds = JSON.parse(localStorage.getItem(DELETED_CASES_KEY) || "[]");
+    deletedIds.forEach((id) => {
+      deletedBuiltinCaseIds.add(id);
+      const index = cases.findIndex((item) => item.id === id);
+      if (index >= 0) cases.splice(index, 1);
+    });
+    const customPacks = JSON.parse(localStorage.getItem(CUSTOM_CASES_KEY) || "[]");
+    customPacks.forEach((pack) => addCasePack(pack, false));
+  } catch (error) {
+    console.warn("Could not load saved cases", error);
+  }
+}
+
+function deleteCurrentCase() {
+  if (cases.length <= 1) {
+    window.alert("At least one case must remain. Upload another case before deleting this one.");
+    return;
+  }
+  const selectedCase = cases[currentIndex];
+  if (!window.confirm(`Delete ${selectedCase.id} from this browser?`)) return;
+  if (builtinCaseIds.has(selectedCase.id)) deletedBuiltinCaseIds.add(selectedCase.id);
+  customCaseIds.delete(selectedCase.id);
+  cases.splice(currentIndex, 1);
+  saveCaseState();
+  renderCase(Math.min(currentIndex, cases.length - 1));
+}
+
+function downloadTemplate() {
+  const template = {
+    schemaVersion: 1,
+    case: {
+      id: "CUSTOM-001",
+      category: "CATEGORY",
+      patient: {
+        date: "DD/MM/YYYY",
+        name: "Patient name",
+        sexAge: "Female / 50 years",
+        weight: "60 kg",
+        allergy: "No known drug allergy",
+        diagnosis: "Diagnosis",
+        prescriber: "Prescriber name",
+        followUp: "DD/MM/YYYY",
+        days: "14 days"
+      },
+      labs: "Scr -, eGFR -, K -, Na -, other relevant labs",
+      meds: [
+        ["1", "Drug name strength", "Qty", "Direction"],
+        ["2", "Drug name strength", "Qty", "Direction"]
+      ],
+      answer: {
+        summary: "Short teaching answer summary.",
+        errors: ["Medical error 1", "Medical error 2"],
+        safer: ["Correction 1", "Correction 2"],
+        keywords: ["keyword1", "keyword2", "interaction"]
+      }
+    },
+    formatMeta: {
+      vn: "VN",
+      coverage: "Teaching simulation",
+      height: "160 cm",
+      weighedDate: "DD/MM/YYYY",
+      time: "09.00 น.",
+      previousDate: "Previous medication date",
+      previousMeds: [
+        ["1", "Previous drug", "Qty", "Direction", "Note"]
+      ]
+    },
+    references: [
+      ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
+      ["MIMS drug reference", "https://www.mims.com/"],
+      ["Official source link", "https://dailymed.nlm.nih.gov/dailymed/"]
+    ]
+  };
+  const blob = new Blob([JSON.stringify(template, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "future-case-template.json";
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function handleCaseUpload(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const pack = JSON.parse(reader.result);
+      addCasePack(pack, true);
+      resetFeedback("Uploaded", `${file.name} was added to this browser.`);
+    } catch (error) {
+      window.alert(`Could not upload case: ${error.message}`);
+    } finally {
+      caseUploadInput.value = "";
+    }
+  };
+  reader.readAsText(file);
+}
+
 generateBtn.addEventListener("click", generateRandomCase);
+uploadBtn.addEventListener("click", () => caseUploadInput.click());
+templateBtn.addEventListener("click", downloadTemplate);
+deleteCaseBtn.addEventListener("click", deleteCurrentCase);
+caseUploadInput.addEventListener("change", handleCaseUpload);
 resetBtn.addEventListener("click", resetStudentWork);
 printBtn.addEventListener("click", () => window.print());
 checkBtn.addEventListener("click", checkAnswer);
@@ -691,4 +974,5 @@ caseStrip.addEventListener("click", (event) => {
   studentAnswer.value = "";
 });
 
+loadCaseState();
 renderCase(0);
