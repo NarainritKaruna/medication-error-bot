@@ -24,8 +24,8 @@
             <span aria-hidden="true">+</span>
             Generate prescription
           </button>
-          <button id="uploadBtn" class="secondary-button" type="button">Upload case</button>
-          <button id="templateBtn" class="secondary-button" type="button">Template</button>
+          <label id="uploadBtn" class="secondary-button file-button" for="caseUploadInput">Upload case</label>
+          <a id="templateBtn" class="secondary-button link-button" href="templates/future-case-template.json" download>Template</a>
           <button id="deleteCaseBtn" class="danger-button" type="button">Delete case</button>
           <button id="resetBtn" class="icon-button" type="button" title="Reset answer" aria-label="Reset answer">
             ↺
@@ -33,7 +33,7 @@
           <button id="printBtn" class="icon-button" type="button" title="Print prescription" aria-label="Print prescription">
             ⎙
           </button>
-          <input id="caseUploadInput" type="file" accept="application/json,.json" hidden>
+          <input id="caseUploadInput" class="visually-hidden-file" type="file" accept="application/json,.json">
         </div>
 
         <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>

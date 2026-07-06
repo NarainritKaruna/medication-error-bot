@@ -622,8 +622,6 @@ const caseReferences = {
 };
 
 const generateBtn = document.querySelector("#generateBtn");
-const uploadBtn = document.querySelector("#uploadBtn");
-const templateBtn = document.querySelector("#templateBtn");
 const deleteCaseBtn = document.querySelector("#deleteCaseBtn");
 const caseUploadInput = document.querySelector("#caseUploadInput");
 const resetBtn = document.querySelector("#resetBtn");
@@ -882,61 +880,6 @@ function deleteCurrentCase() {
   renderCase(Math.min(currentIndex, cases.length - 1));
 }
 
-function downloadTemplate() {
-  const template = {
-    schemaVersion: 1,
-    case: {
-      id: "CUSTOM-001",
-      category: "CATEGORY",
-      patient: {
-        date: "DD/MM/YYYY",
-        name: "Patient name",
-        sexAge: "Female / 50 years",
-        weight: "60 kg",
-        allergy: "No known drug allergy",
-        diagnosis: "Diagnosis",
-        prescriber: "Prescriber name",
-        followUp: "DD/MM/YYYY",
-        days: "14 days"
-      },
-      labs: "Scr -, eGFR -, K -, Na -, other relevant labs",
-      meds: [
-        ["1", "Drug name strength", "Qty", "Direction"],
-        ["2", "Drug name strength", "Qty", "Direction"]
-      ],
-      answer: {
-        summary: "Short teaching answer summary.",
-        errors: ["Medical error 1", "Medical error 2"],
-        safer: ["Correction 1", "Correction 2"],
-        keywords: ["keyword1", "keyword2", "interaction"]
-      }
-    },
-    formatMeta: {
-      vn: "VN",
-      coverage: "Teaching simulation",
-      height: "160 cm",
-      weighedDate: "DD/MM/YYYY",
-      time: "09.00 น.",
-      previousDate: "Previous medication date",
-      previousMeds: [
-        ["1", "Previous drug", "Qty", "Direction", "Note"]
-      ]
-    },
-    references: [
-      ["Medscape Drug Interaction Checker", "https://reference.medscape.com/drug-interactionchecker"],
-      ["MIMS drug reference", "https://www.mims.com/"],
-      ["Official source link", "https://dailymed.nlm.nih.gov/dailymed/"]
-    ]
-  };
-  const blob = new Blob([JSON.stringify(template, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "future-case-template.json";
-  link.click();
-  URL.revokeObjectURL(url);
-}
-
 function handleCaseUpload(event) {
   const file = event.target.files?.[0];
   if (!file) return;
@@ -956,8 +899,6 @@ function handleCaseUpload(event) {
 }
 
 generateBtn.addEventListener("click", generateRandomCase);
-uploadBtn.addEventListener("click", () => caseUploadInput.click());
-templateBtn.addEventListener("click", downloadTemplate);
 deleteCaseBtn.addEventListener("click", deleteCurrentCase);
 caseUploadInput.addEventListener("change", handleCaseUpload);
 resetBtn.addEventListener("click", resetStudentWork);

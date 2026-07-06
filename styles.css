@@ -28,11 +28,15 @@ body {
 }
 
 button,
-textarea {
+textarea,
+.file-button,
+.link-button {
   font: inherit;
 }
 
-button {
+button,
+.file-button,
+.link-button {
   cursor: pointer;
 }
 
@@ -122,11 +126,15 @@ h1 {
 }
 
 .secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 14px;
   background: #ecfeff;
   color: #155e75;
   border-color: #a5f3fc;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .danger-button {
@@ -190,6 +198,18 @@ textarea {
   line-height: 1.45;
   color: var(--ink);
   background: white;
+}
+
+.visually-hidden-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .feedback-card {
