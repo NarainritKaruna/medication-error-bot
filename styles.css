@@ -86,9 +86,10 @@ p {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.15;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .brand-row p {
