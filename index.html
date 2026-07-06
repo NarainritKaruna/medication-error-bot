@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medical Error Teaching Bot</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="control-panel" aria-label="Teaching controls">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">
+            <span>Rx</span>
+          </div>
+          <div>
+            <h1>Medical Error Teaching Bot</h1>
+            <p>Generate a simulated prescription, let students identify the error, then reveal the teaching answer.</p>
+          </div>
+        </div>
+
+        <div class="toolbar" aria-label="Case controls">
+          <button id="generateBtn" class="primary-button" type="button">
+            <span aria-hidden="true">+</span>
+            Generate prescription
+          </button>
+          <button id="resetBtn" class="icon-button" type="button" title="Reset answer" aria-label="Reset answer">
+            ↺
+          </button>
+          <button id="printBtn" class="icon-button" type="button" title="Print prescription" aria-label="Print prescription">
+            ⎙
+          </button>
+        </div>
+
+        <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>
+
+        <label class="answer-label" for="studentAnswer">Student answer</label>
+        <textarea id="studentAnswer" rows="8" placeholder="Type the suspected medical error, why it matters, and how to fix it."></textarea>
+
+        <div class="answer-actions">
+          <button id="checkBtn" class="secondary-button" type="button">Check answer</button>
+          <button id="showBtn" class="secondary-button" type="button">Show teaching answer</button>
+        </div>
+
+        <section class="feedback-card" aria-live="polite">
+          <div class="score-line">
+            <span id="scoreBadge">Ready</span>
+            <strong id="scoreText">Generate a prescription to begin.</strong>
+          </div>
+          <ul id="feedbackList"></ul>
+        </section>
+      </section>
+
+      <section class="workspace" aria-label="Prescription workspace">
+        <article class="prescription verification-form" id="prescriptionCard">
+          <div class="void-mark">VOID</div>
+          <header class="form-title">
+            <p id="formCaseTitle">ใบสั่งยาที่ 1</p>
+            <h2>Prescription Verification Form (Pharmacist)</h2>
+          </header>
+
+          <section class="draft-grid" aria-label="Prescription verification form">
+            <div class="room-row">
+              <span>ห้องยา</span>
+              <label><input type="checkbox" checked disabled> ห้องยาผู้ป่วยนอก 1</label>
+              <label><input type="checkbox" disabled> ห้องยาผู้ป่วยนอก 2</label>
+              <label><input type="checkbox" disabled> ห้องยาเคมีบำบัด</label>
+              <label><input type="checkbox" disabled> ห้องยาเด็ก</label>
+            </div>
+
+            <div class="identity-grid" id="patientGrid"></div>
+
+            <div class="diagnosis-line">
+              <span>Dx</span>
+              <strong id="diagnosisText"></strong>
+            </div>
+
+            <div class="lab-grid">
+              <div class="section-label">Lab</div>
+              <div id="labCells" class="lab-cells"></div>
+            </div>
+
+            <div class="doctor-line" id="doctorLine"></div>
+          </section>
+
+          <section class="med-section">
+            <h2>รายการยาที่ได้รับวันนี้</h2>
+            <div class="table-wrap verification-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>เลขที่</th>
+                    <th>ชื่อยา (ความแรง)</th>
+                    <th>จำนวน</th>
+                    <th>วิธีใช้</th>
+                    <th>การแก้ไข</th>
+                  </tr>
+                </thead>
+                <tbody id="medRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="med-section previous-section">
+            <h2>รายการยาเดิมที่ได้รับ</h2>
+            <div class="table-wrap verification-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>เลขที่</th>
+                    <th>ชื่อยา</th>
+                    <th>จำนวน</th>
+                    <th>วิธีใช้</th>
+                    <th>หมายเหตุ</th>
+                  </tr>
+                </thead>
+                <tbody id="previousRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="student-task">
+            <h2>งานของนักศึกษา</h2>
+            <p>ระบุ medical error อย่างน้อย 2 จุด พร้อมชนิดของ error และข้อเสนอแนะการแก้ไข ตรวจสอบ allergy, labs, quantity, route, interaction, dose, duration และรายการยาเดิม</p>
+          </section>
+
+          <footer class="form-signoff">
+            <div>หมายเหตุเภสัชกร: <strong id="pharmacistNote">Pending review</strong></div>
+            <div>ลงชื่อแพทย์: <strong>Dr. Khiao Sawoey</strong></div>
+          </footer>
+        </article>
+
+        <aside class="answer-panel" id="answerPanel" hidden>
+          <div class="panel-header">
+            <h2>Teaching answer</h2>
+            <button id="hideAnswerBtn" class="icon-button" type="button" title="Hide answer" aria-label="Hide answer">×</button>
+          </div>
+          <div id="answerContent"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
