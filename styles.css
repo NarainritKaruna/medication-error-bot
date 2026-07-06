@@ -98,6 +98,7 @@ h1 {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .primary-button,
@@ -108,19 +109,27 @@ h1 {
   border: 1px solid transparent;
   border-radius: 8px;
   min-height: 42px;
+  line-height: 1;
 }
 
 .primary-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 0 16px;
   background: var(--olive);
   color: white;
   font-weight: 700;
+  flex: 1 1 220px;
 }
 
-.primary-button span {
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
   font-size: 22px;
   line-height: 1;
 }
@@ -129,6 +138,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 0 14px;
   background: #ecfeff;
   color: #155e75;
@@ -138,6 +148,10 @@ h1 {
 }
 
 .danger-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 0 14px;
   background: #fff1f2;
   color: #9f1239;
@@ -146,12 +160,35 @@ h1 {
 }
 
 .icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
   padding: 0;
   background: white;
   border-color: var(--line);
   color: var(--ink);
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.icon-button span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+}
+
+.link-button {
+  flex: 1 1 130px;
+}
+
+.file-button,
+.danger-button {
+  flex: 1 1 124px;
 }
 
 .primary-button:focus-visible,

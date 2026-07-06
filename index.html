@@ -21,17 +21,26 @@
 
         <div class="toolbar" aria-label="Case controls">
           <button id="generateBtn" class="primary-button" type="button">
-            <span aria-hidden="true">+</span>
+            <span class="button-icon" aria-hidden="true">+</span>
             Generate prescription
           </button>
-          <label id="uploadBtn" class="secondary-button file-button" for="caseUploadInput">Upload case</label>
-          <a id="templateBtn" class="secondary-button link-button" href="templates/future-case-template.xlsx" download>Template .xlsx</a>
-          <button id="deleteCaseBtn" class="danger-button" type="button">Delete case</button>
+          <a id="templateBtn" class="secondary-button link-button" href="templates/future-case-template.xlsx" download>
+            <span class="button-icon" aria-hidden="true">↓</span>
+            Template .xlsx
+          </a>
+          <label id="uploadBtn" class="secondary-button file-button" for="caseUploadInput">
+            <span class="button-icon" aria-hidden="true">↑</span>
+            Upload case
+          </label>
+          <button id="deleteCaseBtn" class="danger-button" type="button">
+            <span class="button-icon" aria-hidden="true">×</span>
+            Delete case
+          </button>
           <button id="resetBtn" class="icon-button" type="button" title="Reset answer" aria-label="Reset answer">
-            ↺
+            <span aria-hidden="true">↻</span>
           </button>
           <button id="printBtn" class="icon-button" type="button" title="Print prescription" aria-label="Print prescription">
-            ⎙
+            <span aria-hidden="true">⎙</span>
           </button>
           <input id="caseUploadInput" class="visually-hidden-file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/json,.json">
         </div>
