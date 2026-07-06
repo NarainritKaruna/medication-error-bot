@@ -721,7 +721,9 @@ function renderCase(index) {
 function updateCaseButtons() {
   caseStrip.innerHTML = cases.map((item, index) => {
     const active = index === currentIndex ? " active" : "";
-    return `<button class="case-pill${active}" type="button" data-index="${index}" aria-label="Open case ${index + 1}">Case ${index + 1}</button>`;
+    const caseType = customCaseIds.has(item.id) ? "uploaded-case" : "standard-case";
+    const caseLabel = customCaseIds.has(item.id) ? "uploaded" : "standard";
+    return `<button class="case-pill ${caseType}${active}" type="button" data-index="${index}" aria-label="Open ${caseLabel} case ${index + 1}">Case ${index + 1}</button>`;
   }).join("");
 }
 

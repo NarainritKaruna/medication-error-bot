@@ -30,13 +30,17 @@ body {
 button,
 textarea,
 .file-button,
-.link-button {
+.link-button,
+.backup-export-button,
+.backup-import-button {
   font: inherit;
 }
 
 button,
 .file-button,
-.link-button {
+.link-button,
+.backup-export-button,
+.backup-import-button {
   cursor: pointer;
 }
 
@@ -104,6 +108,8 @@ h1 {
 .primary-button,
 .secondary-button,
 .danger-button,
+.backup-export-button,
+.backup-import-button,
 .icon-button,
 .case-pill {
   border: 1px solid transparent;
@@ -159,6 +165,28 @@ h1 {
   font-weight: 700;
 }
 
+.backup-export-button,
+.backup-import-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  font-weight: 700;
+}
+
+.backup-export-button {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.backup-import-button {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
 .icon-button {
   display: inline-flex;
   align-items: center;
@@ -187,14 +215,15 @@ h1 {
 }
 
 .file-button,
-.danger-button,
-.backup-button {
+.danger-button {
   flex: 1 1 124px;
 }
 
 .primary-button:focus-visible,
 .secondary-button:focus-visible,
 .danger-button:focus-visible,
+.backup-export-button:focus-visible,
+.backup-import-button:focus-visible,
 .icon-button:focus-visible,
 .case-pill:focus-visible,
 textarea:focus-visible {
@@ -208,18 +237,39 @@ textarea:focus-visible {
   gap: 8px;
 }
 
+.backup-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
 .case-pill {
   padding: 0 6px;
-  background: white;
-  border-color: var(--line);
-  color: var(--muted);
   font-weight: 700;
 }
 
-.case-pill.active {
+.case-pill.standard-case {
+  background: #eef6e8;
+  border-color: #b8d6aa;
+  color: var(--olive-dark);
+}
+
+.case-pill.uploaded-case {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.case-pill.standard-case.active {
   color: white;
   background: var(--teal);
   border-color: var(--teal);
+}
+
+.case-pill.uploaded-case.active {
+  color: white;
+  background: var(--amber);
+  border-color: var(--amber);
 }
 
 .answer-label {

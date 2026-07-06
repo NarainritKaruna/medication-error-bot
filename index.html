@@ -32,14 +32,6 @@
             <span class="button-icon" aria-hidden="true">↑</span>
             Upload case
           </label>
-          <button id="exportBackupBtn" class="secondary-button backup-button" type="button">
-            <span class="button-icon" aria-hidden="true">⇩</span>
-            Export backup
-          </button>
-          <label id="importBackupBtn" class="secondary-button file-button" for="backupImportInput">
-            <span class="button-icon" aria-hidden="true">⇧</span>
-            Import backup
-          </label>
           <button id="deleteCaseBtn" class="danger-button" type="button">
             <span class="button-icon" aria-hidden="true">×</span>
             Delete case
@@ -55,6 +47,16 @@
         </div>
 
         <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>
+        <div class="backup-actions" aria-label="Backup controls">
+          <button id="exportBackupBtn" class="backup-export-button" type="button">
+            <span class="button-icon" aria-hidden="true">⇩</span>
+            Export backup
+          </button>
+          <label id="importBackupBtn" class="backup-import-button" for="backupImportInput">
+            <span class="button-icon" aria-hidden="true">⇧</span>
+            Import backup
+          </label>
+        </div>
 
         <label class="answer-label" for="studentAnswer">Student answer</label>
         <textarea id="studentAnswer" rows="8" placeholder="Type the suspected medical error, why it matters, and how to fix it."></textarea>
@@ -163,6 +165,6 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <script src="app.js?v=20260706-backup-tools"></script>
+    <script src="app.js?v=20260706-case-colors"></script>
   </body>
 </html>
