@@ -4,7 +4,7 @@ Static teaching mockup for prescription-verification and medication-error traini
 
 ## Features
 
-- 11 simulated Green Olive Hospital prescription cases
+- 10 simulated Green Olive Hospital prescription cases
 - Draft-style pharmacist prescription verification form
 - Student free-text answer box
 - Keyword-based answer feedback
