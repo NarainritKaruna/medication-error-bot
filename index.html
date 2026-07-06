@@ -32,6 +32,14 @@
             <span class="button-icon" aria-hidden="true">↑</span>
             Upload case
           </label>
+          <button id="exportBackupBtn" class="secondary-button backup-button" type="button">
+            <span class="button-icon" aria-hidden="true">⇩</span>
+            Export backup
+          </button>
+          <label id="importBackupBtn" class="secondary-button file-button" for="backupImportInput">
+            <span class="button-icon" aria-hidden="true">⇧</span>
+            Import backup
+          </label>
           <button id="deleteCaseBtn" class="danger-button" type="button">
             <span class="button-icon" aria-hidden="true">×</span>
             Delete case
@@ -43,6 +51,7 @@
             <span aria-hidden="true">⎙</span>
           </button>
           <input id="caseUploadInput" class="visually-hidden-file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/json,.json">
+          <input id="backupImportInput" class="visually-hidden-file" type="file" accept="application/json,.json">
         </div>
 
         <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>
@@ -154,6 +163,6 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <script src="app.js?v=20260706-lab-units"></script>
+    <script src="app.js?v=20260706-backup-tools"></script>
   </body>
 </html>

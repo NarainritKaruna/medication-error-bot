@@ -12,6 +12,7 @@ Static teaching mockup for prescription-verification and medication-error traini
 - Print-friendly prescription view
 - Excel template download for future cases
 - Excel case upload with in-browser conversion to the app's internal JSON format
+- Export/import backup for locally uploaded cases
 - Local browser deletion/hiding of cases
 
 ## Run Locally
@@ -26,7 +27,7 @@ Then open `http://127.0.0.1:8765/`.
 
 ## Case Upload
 
-Download `templates/future-case-template.xlsx`, fill in the sheets, then use **Upload case** on the website. Uploaded cases are stored in browser local storage. Because this is a static GitHub Pages site, upload/delete actions do not permanently write back to GitHub.
+Download `templates/future-case-template.xlsx`, fill in the sheets, then use **Upload case** on the website. Uploaded cases are stored in browser local storage. Use **Export backup** to save uploaded cases as a JSON backup, and **Import backup** to restore them in another browser or later session. Because this is a static GitHub Pages site, upload/delete actions do not permanently write back to GitHub.
 
 ## GitHub Pages
 

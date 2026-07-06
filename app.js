@@ -624,6 +624,8 @@ const caseReferences = {
 const generateBtn = document.querySelector("#generateBtn");
 const deleteCaseBtn = document.querySelector("#deleteCaseBtn");
 const caseUploadInput = document.querySelector("#caseUploadInput");
+const backupImportInput = document.querySelector("#backupImportInput");
+const exportBackupBtn = document.querySelector("#exportBackupBtn");
 const resetBtn = document.querySelector("#resetBtn");
 const printBtn = document.querySelector("#printBtn");
 const caseStrip = document.querySelector("#caseStrip");
@@ -838,8 +840,8 @@ function addCasePack(pack, persist = true) {
   return true;
 }
 
-function saveCaseState() {
-  const customPacks = cases
+function getCustomCasePacks() {
+  return cases
     .filter((item) => customCaseIds.has(item.id))
     .map((item) => ({
       schemaVersion: 1,
@@ -847,6 +849,10 @@ function saveCaseState() {
       formatMeta: formatMeta[item.id] || buildDefaultMeta(item),
       references: item.references || []
     }));
+}
+
+function saveCaseState() {
+  const customPacks = getCustomCasePacks();
   localStorage.setItem(CUSTOM_CASES_KEY, JSON.stringify(customPacks));
   localStorage.setItem(DELETED_CASES_KEY, JSON.stringify([...deletedBuiltinCaseIds]));
 }
@@ -897,6 +903,80 @@ function handleCaseUpload(event) {
       window.alert(`Could not upload case: ${error.message}`);
     } finally {
       caseUploadInput.value = "";
+    }
+  };
+  reader.readAsText(file);
+}
+
+function downloadJsonFile(filename, payload) {
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportCaseBackup() {
+  const customCases = getCustomCasePacks();
+  const deletedIds = [...deletedBuiltinCaseIds];
+  const payload = {
+    schemaVersion: 1,
+    app: "medical-error-teaching-bot",
+    exportedAt: new Date().toISOString(),
+    customCases,
+    deletedBuiltinCaseIds: deletedIds
+  };
+  const dateStamp = new Date().toISOString().slice(0, 10);
+  downloadJsonFile(`medical-error-bot-backup-${dateStamp}.json`, payload);
+  resetFeedback("Exported", `Backup downloaded with ${customCases.length} uploaded case(s).`);
+}
+
+function packsFromBackupPayload(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (!payload || typeof payload !== "object") {
+    throw new Error("Backup file must contain a JSON object or array.");
+  }
+  if (Array.isArray(payload.customCases)) return payload.customCases;
+  if (Array.isArray(payload.cases)) return payload.cases;
+  if (payload.case) return [payload];
+  throw new Error("Backup file must contain customCases, cases, or one case pack.");
+}
+
+function applyBackupPayload(payload) {
+  const packs = packsFromBackupPayload(payload);
+  const deletedIds = Array.isArray(payload.deletedBuiltinCaseIds) ? payload.deletedBuiltinCaseIds : [];
+  if (!packs.length && !deletedIds.length) {
+    throw new Error("Backup has no cases to import.");
+  }
+  const confirmed = window.confirm(`Import ${packs.length} uploaded case(s) from backup? Existing matching case IDs will be replaced.`);
+  if (!confirmed) return;
+
+  deletedIds.forEach((id) => {
+    deletedBuiltinCaseIds.add(id);
+    const index = cases.findIndex((item) => item.id === id);
+    if (index >= 0) cases.splice(index, 1);
+  });
+  packs.forEach((pack) => addCasePack(pack, false));
+  saveCaseState();
+  renderCase(Math.max(0, cases.length - 1));
+  resetFeedback("Imported", `${packs.length} backup case(s) restored to this browser.`);
+}
+
+function handleBackupImport(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      applyBackupPayload(JSON.parse(reader.result));
+    } catch (error) {
+      window.alert(`Could not import backup: ${error.message}`);
+    } finally {
+      backupImportInput.value = "";
     }
   };
   reader.readAsText(file);
@@ -1017,6 +1097,8 @@ function handleWorkbookUpload(file) {
 generateBtn.addEventListener("click", generateRandomCase);
 deleteCaseBtn.addEventListener("click", deleteCurrentCase);
 caseUploadInput.addEventListener("change", handleCaseUpload);
+backupImportInput.addEventListener("change", handleBackupImport);
+exportBackupBtn.addEventListener("click", exportCaseBackup);
 resetBtn.addEventListener("click", resetStudentWork);
 printBtn.addEventListener("click", () => window.print());
 checkBtn.addEventListener("click", checkAnswer);
