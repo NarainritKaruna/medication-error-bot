@@ -883,6 +883,10 @@ function deleteCurrentCase() {
 function handleCaseUpload(event) {
   const file = event.target.files?.[0];
   if (!file) return;
+  if (file.name.toLowerCase().endsWith(".xlsx")) {
+    handleWorkbookUpload(file);
+    return;
+  }
   const reader = new FileReader();
   reader.onload = () => {
     try {
@@ -896,6 +900,118 @@ function handleCaseUpload(event) {
     }
   };
   reader.readAsText(file);
+}
+
+function readWorkbookRows(workbook, sheetName) {
+  const sheet = workbook.Sheets[sheetName];
+  if (!sheet) throw new Error(`Missing sheet: ${sheetName}`);
+  return XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+}
+
+function keyValueFromRows(rows) {
+  const values = {};
+  rows.forEach((row) => {
+    const key = String(row[0] ?? "").trim();
+    if (!key || key.includes("fields")) return;
+    values[key] = String(row[1] ?? "").trim();
+  });
+  return values;
+}
+
+function tableFromRows(rows, requiredFirstHeader) {
+  const headerIndex = rows.findIndex((row) => String(row[0] ?? "").trim() === requiredFirstHeader);
+  if (headerIndex < 0) throw new Error(`Could not find ${requiredFirstHeader} header row.`);
+  return rows.slice(headerIndex + 1).filter((row) => row.some((cell) => String(cell ?? "").trim()));
+}
+
+function packFromWorkbook(workbook) {
+  const caseFields = keyValueFromRows(readWorkbookRows(workbook, "Case"));
+  const medRows = tableFromRows(readWorkbookRows(workbook, "Medications"), "No");
+  const previousRows = tableFromRows(readWorkbookRows(workbook, "Previous Meds"), "No");
+  const answerRows = tableFromRows(readWorkbookRows(workbook, "Answer"), "Type");
+  const referenceRows = tableFromRows(readWorkbookRows(workbook, "References"), "Label");
+
+  const errors = [];
+  const safer = [];
+  let summary = "";
+  let keywords = [];
+  answerRows.forEach((row) => {
+    const type = String(row[0] ?? "").trim().toLowerCase();
+    const text = String(row[1] ?? "").trim();
+    if (!text) return;
+    if (type === "summary") summary = text;
+    if (type === "error") errors.push(text);
+    if (type === "safer") safer.push(text);
+    if (type === "keywords") keywords = text.split(",").map((item) => item.trim()).filter(Boolean);
+  });
+
+  return {
+    schemaVersion: 1,
+    case: {
+      id: caseFields.id,
+      category: caseFields.category,
+      patient: {
+        date: caseFields.date,
+        name: caseFields.name,
+        sexAge: caseFields.sexAge,
+        weight: caseFields.weight,
+        allergy: caseFields.allergy,
+        diagnosis: caseFields.diagnosis,
+        prescriber: caseFields.prescriber,
+        followUp: caseFields.followUp,
+        days: caseFields.days
+      },
+      labs: caseFields.labs,
+      meds: medRows.map((row) => [
+        String(row[0] ?? "").trim(),
+        String(row[1] ?? "").trim(),
+        String(row[2] ?? "").trim(),
+        String(row[3] ?? "").trim()
+      ]),
+      answer: { summary, errors, safer, keywords }
+    },
+    formatMeta: {
+      vn: caseFields.vn,
+      coverage: caseFields.coverage,
+      height: caseFields.height,
+      weighedDate: caseFields.weighedDate,
+      time: caseFields.time,
+      previousDate: caseFields.previousDate,
+      previousMeds: previousRows.map((row) => [
+        String(row[0] ?? "").trim(),
+        String(row[1] ?? "").trim(),
+        String(row[2] ?? "").trim(),
+        String(row[3] ?? "").trim(),
+        String(row[4] ?? "").trim()
+      ])
+    },
+    references: referenceRows.map((row) => [
+      String(row[0] ?? "").trim(),
+      String(row[1] ?? "").trim()
+    ]).filter((row) => row[0] || row[1])
+  };
+}
+
+function handleWorkbookUpload(file) {
+  if (!window.XLSX) {
+    window.alert("Excel upload library is still loading. Please refresh the page and try again.");
+    caseUploadInput.value = "";
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const workbook = XLSX.read(new Uint8Array(reader.result), { type: "array" });
+      const pack = packFromWorkbook(workbook);
+      addCasePack(pack, true);
+      resetFeedback("Uploaded", `${file.name} was converted from Excel and added to this browser.`);
+    } catch (error) {
+      window.alert(`Could not upload Excel case: ${error.message}`);
+    } finally {
+      caseUploadInput.value = "";
+    }
+  };
+  reader.readAsArrayBuffer(file);
 }
 
 generateBtn.addEventListener("click", generateRandomCase);

@@ -25,7 +25,7 @@
             Generate prescription
           </button>
           <label id="uploadBtn" class="secondary-button file-button" for="caseUploadInput">Upload case</label>
-          <a id="templateBtn" class="secondary-button link-button" href="templates/future-case-template.json" download>Template</a>
+          <a id="templateBtn" class="secondary-button link-button" href="templates/future-case-template.xlsx" download>Template .xlsx</a>
           <button id="deleteCaseBtn" class="danger-button" type="button">Delete case</button>
           <button id="resetBtn" class="icon-button" type="button" title="Reset answer" aria-label="Reset answer">
             ↺
@@ -33,7 +33,7 @@
           <button id="printBtn" class="icon-button" type="button" title="Print prescription" aria-label="Print prescription">
             ⎙
           </button>
-          <input id="caseUploadInput" class="visually-hidden-file" type="file" accept="application/json,.json">
+          <input id="caseUploadInput" class="visually-hidden-file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/json,.json">
         </div>
 
         <div class="case-strip" id="caseStrip" aria-label="Case selection"></div>
@@ -144,6 +144,7 @@
       </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
