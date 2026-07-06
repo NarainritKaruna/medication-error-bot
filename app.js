@@ -13,7 +13,7 @@ const cases = [
       followUp: "13/07/2026",
       days: "7 days"
     },
-    labs: "INR 1.2, Hb 11.2 g/dL, platelets 180,000/uL, AST/ALT 32/28 U/L",
+    labs: "INR 1.2, Hb 11.2 g/dL, Platelets 180,000/µL, AST/ALT 32/28 U/L",
     meds: [
       ["1", "Warfarin 5 mg tablet", "30 tab", "Take 1 tablet orally once daily at bedtime"],
       ["2", "Amiodarone 200 mg tablet", "90 tab", "Take 1 tablet orally three times daily after meals"],
@@ -86,7 +86,7 @@ const cases = [
       followUp: "03/08/2026",
       days: "28 days"
     },
-    labs: "Hb 12.4 g/dL, platelets 250,000/uL, Scr 1.0 mg/dL, ALT 35 U/L",
+    labs: "Hb 12.4 g/dL, Platelets 250,000/µL, Scr 1.0 mg/dL, ALT 35 U/L",
     meds: [
       ["1", "Aspirin 81 mg tablet", "30 tab", "Take 1 tablet orally once daily after meals"],
       ["2", "Clopidogrel 75 mg tablet", "30 tab", "Take 1 tablet orally once daily"],
@@ -159,7 +159,7 @@ const cases = [
       followUp: "09/07/2026",
       days: "3 days"
     },
-    labs: "WBC 15,200/uL, CRP 58 mg/L, Scr 0.4 mg/dL, stool WBC/RBC positive",
+    labs: "WBC 15,200/µL, CRP 58 mg/L, Scr 0.4 mg/dL, stool WBC/RBC positive",
     meds: [
       ["1", "Loperamide 2 mg capsule", "20 cap", "Take 1 capsule orally after each loose stool"],
       ["2", "Ciprofloxacin 500 mg tablet", "28 tab", "Take 1 tablet orally twice daily for 14 days"],
@@ -267,7 +267,7 @@ const cases = [
       followUp: "13/07/2026",
       days: "3 days"
     },
-    labs: "Scr 4.2 mg/dL, eGFR 12 mL/min/1.73 m2, K 5.0 mmol/L, WBC 17,000/uL",
+    labs: "Scr 4.2 mg/dL, eGFR 12 mL/min/1.73 m2, K 5.0 mmol/L, WBC 17,000/µL",
     meds: [
       ["1", "Vancomycin 1 g IV", "21 doses", "Give IV every 8 hours for 7 days"],
       ["2", "Gentamicin 80 mg IV", "21 doses", "Give IV every 8 hours for 7 days"],
@@ -303,7 +303,7 @@ const cases = [
       followUp: "10/07/2026 13:00",
       days: "Chemotherapy today"
     },
-    labs: "ANC 800/uL, platelets 45,000/uL, Hb 9.2 g/dL, AST/ALT 48/52 U/L",
+    labs: "ANC 800/µL, Platelets 45,000/µL, Hb 9.2 g/dL, AST/ALT 48/52 U/L",
     meds: [
       ["1", "Vincristine 2 mg", "1 dose", "Give intrathecal once today"],
       ["2", "Methotrexate 12 mg", "1 dose", "Give IV once today"],
@@ -699,7 +699,7 @@ function renderCase(index) {
   ].join("");
 
   diagnosisText.textContent = p.diagnosis;
-  labCells.innerHTML = selectedCase.labs.split(",").map((lab) => {
+  labCells.innerHTML = selectedCase.labs.split(/,\s+/).map((lab) => {
     return `<div class="lab-cell">${escapeHtml(lab.trim())}</div>`;
   }).join("");
   doctorLine.textContent = `แพทย์ ${p.prescriber}     นัดติดตาม ${p.followUp}     Clinic Teaching OPD     จำนวนวันถึงนัด ${p.days}`;
