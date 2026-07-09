@@ -1,4 +1,4 @@
-# Medical Error Teaching Bot
+# Medication Error Teaching Bot
 
 Static teaching mockup for prescription-verification and medication-error training.
 

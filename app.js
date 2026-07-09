@@ -927,7 +927,7 @@ function exportCaseBackup() {
   const deletedIds = [...deletedBuiltinCaseIds];
   const payload = {
     schemaVersion: 1,
-    app: "medical-error-teaching-bot",
+    app: "medication-error-teaching-bot",
     exportedAt: new Date().toISOString(),
     customCases,
     deletedBuiltinCaseIds: deletedIds
